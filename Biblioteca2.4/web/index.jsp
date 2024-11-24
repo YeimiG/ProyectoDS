@@ -6,35 +6,31 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style_1.css">
-    <title>Página Principal</title>
+  <meta charset="UTF-8">
+  <title>Menu Principal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="css/style_2.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Rubik+Moonrocks&family=Spicy+Rice&display=swap" rel="stylesheet">
+
+
 </head>
-<body class="align">
+<body>
+<!-- partial:index.partial.html -->
 
-  <div class="grid align__item">
-
-    <div class="register">
-
-      
-      <h2>Bienvenidos</h2>
-
-      <form action="" method="post" class="form">
-
-        <div class="form__field">
-            <a href="InicioSesion.jsp" class="form__button">Inicio Sesion como usuario</a><br>
-            <br><a href="LoginAdmin.jsp" class="form__button">Inicio Sesion como Admin</a>
-       </div>
-
-
-      </form>
-
-    </div>
-
-  </div>
-
+</div>
+<div class="container">
+	<nav class="menu">
+		<h1>Bienvenido a Biblioteca El Saber</h1>
+		<br><br><br><br>
+		<a href="InicioSesion.jsp">Iniciar Sesion como Usuario</a>
+		<a href="LoginAdmin.jsp">Iniciar Sesion como Adiministrador</a>
+	</nav>
+</div>
+<!-- partial -->
+  
 </body>
 </html>
