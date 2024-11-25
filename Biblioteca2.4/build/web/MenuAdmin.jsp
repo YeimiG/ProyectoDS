@@ -65,7 +65,7 @@
     
                 <!-- Botón de cerrar sesión -->
     <a href="index.jsp?accion=Logout" class=" btn logout-button" >
-    <i class="fa fa-sign-out" aria-hidden="true"></i> Salir
+    <i class="fa fa-sign-out" aria-hidden="true"></i> 
     </a>
 
   </ul> <!-- /.first-menu -->

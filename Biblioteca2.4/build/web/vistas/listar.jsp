@@ -62,7 +62,9 @@
     <li class="list-group-item pl-3 py-2">
       <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Reportes</span></i></a>
     </li>
-        </li>
+     <li class="list-group-item pl-3 py-2">
+      <a href="Registar.jsp"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Registrar usuario</span></i></a>
+    </li>
         <a href="index.jsp?accion=Logout" class="btn  logout-button">
     <i class="fa fa-sign-out" aria-hidden="true"></i> 
 
