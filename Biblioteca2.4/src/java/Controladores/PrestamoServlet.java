@@ -6,106 +6,128 @@ package Controladores;
 
 import Modelos.Prestamos;
 import ModelosDao.PrestamosDao;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 
 // Servlet anotado
-@WebServlet(name = "PrestamoServlet", urlPatterns = {"/PrestamoServlet"})
 public class PrestamoServlet extends HttpServlet {
 
-    PrestamosDao dao = new PrestamosDao();
-    Prestamos prestamo = new Prestamos();
+    String listar="vistas/prestamos.jsp";
+    String addprestamo="vistas/addprestamo.jsp";
+    String editprestamo="vistas/editprestamo.jsp";
+    String mensaje="vistas/Mensaje.jsp";
+    Prestamos p=new Prestamos();
+    PrestamosDao dao=new PrestamosDao();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    int id;
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String accion = request.getParameter("accion");
-
-        switch (accion != null ? accion : "listar") {
-            case "listar":
-                List<Prestamos> lista = dao.listar();
-                request.setAttribute("prestamos", lista);
-                request.getRequestDispatcher("vistas/prestamos.jsp").forward(request, response);
-                break;
-            case "mensaje":
-               int idLibro = Integer.parseInt(request.getParameter("id")); // Capturar el ID del libro
-               request.setAttribute("idLibro", idLibro); // Enviar el ID del libro al formulario
-               request.getRequestDispatcher("vistas/Mensaje.jsp").forward(request, response); // Redirigir al formulario
-                break;
-
-            case "editar":
-                int id = Integer.parseInt(request.getParameter("id"));
-                Prestamos prestamo = dao.list(id);
-                request.setAttribute("prestamo", prestamo);
-                request.getRequestDispatcher("editarPrestamo.jsp").forward(request, response);
-                break;
-
-            case "eliminar":
-                int idEliminar = Integer.parseInt(request.getParameter("id"));
-                dao.eliminar(idEliminar);
-                response.sendRedirect("Prestamos?accion=listar");
-                break;
-
-            default:
-                response.sendRedirect("Prestamos?accion=listar");
-                break;
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Controlador</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
-        String accion = request.getParameter("accion");
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    String acceso = "";
+    String action = request.getParameter("accion");
 
-        switch (accion != null ? accion : "listar") {
-            case "guardar":
-                try {
-                    String cantidadPrestada = request.getParameter("cantidadPrestada");
-                    String fechaPrestamoStr = request.getParameter("fechaPrestamo");
-                    String fechaDevolucionStr = request.getParameter("fechaDevolucion");
+    try {
+        if (action.equalsIgnoreCase("listar")) {
+            acceso = listar;
+        } else if (action.equalsIgnoreCase("addprestamo")) {
+            acceso = addprestamo;
+        }else if (action.equalsIgnoreCase("mensaje")) {
+            acceso = mensaje;
+        } else if (action.equalsIgnoreCase("Agregar")) {
+            // Captura los parámetros del formulario
+            String CantidadPrestada = request.getParameter("txtCantidadPrestada");
+            String FechaPrestamo = request.getParameter("txtFechaPrestamo");
+            String FechaDevolucion = request.getParameter("txtFechaDevolucion");
+            int idLibro = Integer.parseInt(request.getParameter("txtidLibro"));
+            int idCliente = Integer.parseInt(request.getParameter("txtidCliente"));
 
-                    prestamo.set_CantidadPrestada(cantidadPrestada);
-                    prestamo.setFechaPrestamo(sdf.parse(fechaPrestamoStr));
-                    prestamo.setFechaDevolucion(sdf.parse(fechaDevolucionStr));
+            // Asigna los valores al objeto Prestamos
+            p.set_CantidadPrestada(CantidadPrestada);
+            p.setFechaPrestamo(sdf.parse(FechaPrestamo)); // Convierte la fecha
+            p.setFechaDevolucion(sdf.parse(FechaDevolucion)); // Convierte la fecha
+            p.setID_Libro(idLibro);
+            p.setID_Cliente(idCliente);
 
-                    dao.add(prestamo);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                response.sendRedirect("Prestamos?accion=listar");
-                break;
+            // Llama al método correcto del DAO
+            dao.add(p);
+            acceso = listar;
+        } else if (action.equalsIgnoreCase("editar")) {
+            request.setAttribute("idper", request.getParameter("id"));
+            acceso = editprestamo;
+        } else if (action.equalsIgnoreCase("Actualizar")) {
+            id = Integer.parseInt(request.getParameter("txtid"));
+            String CantidadPrestada = request.getParameter("txtCantidadPrestada");
+            String FechaPrestamo = request.getParameter("txtFechaPrestamo");
+            String FechaDevolucion = request.getParameter("txtFechaDevolucion");
+            int idLibro = Integer.parseInt(request.getParameter("txtidLibro"));
+            int idCliente = Integer.parseInt(request.getParameter("txtidCliente"));
 
-            case "actualizar":
-                try {
-                    int id = Integer.parseInt(request.getParameter("id"));
-                    String cantidadPrestada = request.getParameter("cantidadPrestada");
-                    String fechaPrestamoStr = request.getParameter("fechaPrestamo");
-                    String fechaDevolucionStr = request.getParameter("fechaDevolucion");
+            // Asigna los valores al objeto Prestamos
+            p.set_CantidadPrestada(CantidadPrestada);
+            p.setFechaPrestamo(sdf.parse(FechaPrestamo));
+            p.setFechaDevolucion(sdf.parse(FechaDevolucion));
+            p.setID_Libro(idLibro);
+            p.setID_Cliente(idCliente);
 
-                    prestamo.setID_Prestamo(id);
-                    prestamo.set_CantidadPrestada(cantidadPrestada);
-                    prestamo.setFechaPrestamo(sdf.parse(fechaPrestamoStr));
-                    prestamo.setFechaDevolucion(sdf.parse(fechaDevolucionStr));
-
-                    dao.edit(prestamo);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                response.sendRedirect("Prestamos?accion=listar");
-                break;
-
-            default:
-                response.sendRedirect("Prestamos?accion=listar");
-                break;
+            // Llama al método correcto del DAO
+            dao.edit(p);
+            acceso = listar;
+        } else if (action.equalsIgnoreCase("eliminar")) {
+            id = Integer.parseInt(request.getParameter("id"));
+            dao.eliminar(id);
+            acceso = listar;
+        } else {
+            acceso = "vistas/error.jsp";
+            request.setAttribute("error", "Acción desconocida: " + action);
         }
+    } catch (Exception e) {
+        e.printStackTrace();
+        acceso = "vistas/error.jsp";
+        request.setAttribute("error", "Ocurrió un error: " + e.getMessage());
     }
+
+    // Redirección a la vista correspondiente
+    RequestDispatcher vista = request.getRequestDispatcher(acceso);
+    vista.forward(request, response);
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+   
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+
+   
 }
-
