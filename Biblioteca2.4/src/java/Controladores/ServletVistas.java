@@ -20,6 +20,10 @@ public class ServletVistas extends HttpServlet {
     String listarlibrocliente = "vistas/listarLibrosCliente.jsp";
     String addlibro="vistas/addlibro.jsp";
     String editlibro="vistas/editlibro.jsp";
+    String Reportes="vistas/Reportes.jsp";
+     String ReporteCliente="vistas/ReporteClente.jsp";
+    String botones="vistas/botones.jsp";
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -57,6 +61,17 @@ public class ServletVistas extends HttpServlet {
         
         if(action.equalsIgnoreCase("inicioAdmin")){
             acceso=inicioAdmin;          
+        }
+        
+        else if(action.equalsIgnoreCase("Reportes")){
+            acceso=Reportes;
+            
+        }else if(action.equalsIgnoreCase("botones")){
+            acceso=botones;
+            
+        }else if(action.equalsIgnoreCase("ReporteCliente")){
+            acceso=ReporteCliente;
+            
         }
     }
     @Override

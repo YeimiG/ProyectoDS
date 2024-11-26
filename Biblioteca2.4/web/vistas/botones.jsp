@@ -1,7 +1,8 @@
 <%-- 
-    Document   : MenuAdmin
-    Created on : 19 nov 2024, 12:02:34 p. m.
-    Author     : YEIMI
+    Document   : botones
+    Created on : 25 nov 2024, 6:59:49 p. m.
+    Author     : owen CN
+nuevo
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -33,14 +34,20 @@
   <div class="sidebar">
   <ul class="list-group flex-column d-inline-block first-menu">
      <li class="list-group-item pl-3 py-2">
-      <a href="ServletVistas?accion=inicioAdmin"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Inicio</span></i></a>
+      <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Inicio</span></i></a>
     </li> 
     <li class="list-group-item pl-3 py-2">
       <a href="LibroServlet?accion=listar"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Libros</span></i></a>
     </li> 
     
     <li class="list-group-item pl-3 py-2">
-      <a href="PrestamoServlet?accion=listar"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Prestamos</span></i></a>
+      <a href="${pageContext.request.contextPath}/PrestamoServlet?accion=listar"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Prestamos</span></i></a>
+    </li> <!-- /.list-group-item -->
+    
+    <li class="list-group-item pl-3 py-2">
+      <a href="#">
+        <i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Devolucion</span></i>
+      </a>
     </li> <!-- /.list-group-item -->
     
     
@@ -48,39 +55,42 @@
       <a href="ClienteServlet?accion=listar"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Clientes</span></i></a>
       
     </li>
-    
-    <li class="list-group-item pl-3 py-2">
-      <a href="LibroServlet?accion=botones"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Reportes</span></i></a>
-    </li>
-    
+   
+  
+     <li class="list-group-item pl-3 py-2" >
+       <a href="LibroServlet?accion=botones"  ><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Reportes</span></i></a>
+     </li> 
+        
+     
      <li class="list-group-item pl-3 py-2">
       <a href="Registar.jsp"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Registrar usuario</span></i></a>
-    </li>
-    
+     </li>
+                <!-- Botón de cerrar sesión -->
     <a href="index.jsp?accion=Logout" class=" btn logout-button" >
-    <i class="fa fa-sign-out" aria-hidden="true">salir</i> 
+    <i class="fa fa-sign-out" aria-hidden="true"><span class="ml-2 align-middle">Salir</span></i> 
     </a>
 
+
+
+  </ul> <!-- /.first-menu -->
+  
+  
+</div> <!-- /.sidebar -->
+
 </div>
+    
+    
+    
 
 <div class="wp-content">
   <div class="container-fluid">
-   <style>
-  .center-content {
-    text-align: center;
-  }
-  .center-content img {
-    display: block;
-    margin: 0 auto;
-    max-width: 1000px;
-  }
-</style>
-
-<div class="container-fluid center-content">
-    
-    <h1>MENU ADMINISTRADORES</h1>
-    <img src="css/img-niños.jpg" alt="Menu Administradores">
-</div>
+    <body>
+        <td class="text-center">
+        <a class="btn btn-warning" href="LibroServlet?accion=Reportes">Libros</a>
+        <a class="btn btn-danger"  href="PrestamoServlet?accion=ReportePrestamo">Prestamos</a>
+        <a class="btn btn-warning" href="ClienteServlet?accion=ReporteCliente">Clientes</a>
+        </td>
+    </body>
   </div>
 </div>
 <!-- partial -->
@@ -88,6 +98,32 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

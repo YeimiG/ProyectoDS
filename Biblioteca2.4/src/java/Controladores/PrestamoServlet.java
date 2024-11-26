@@ -24,6 +24,8 @@ public class PrestamoServlet extends HttpServlet {
     String editprestamo = "vistas/editprestamo.jsp";
     String mensaje = "vistas/Mensaje.jsp";
     String listarLibrosClientes = "vistas/listarLibrosCliente.jsp";
+    String ReportePrestamo="vistas/ReportePrestamo.jsp";
+    String botones="vistas/botones.jsp";
     Prestamos p = new Prestamos();
     PrestamosDao dao = new PrestamosDao();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -60,7 +62,13 @@ public class PrestamoServlet extends HttpServlet {
                 acceso = mensaje;
             } else if (action.equalsIgnoreCase("listarLibrosClientes")) {
                 acceso = listarLibrosClientes;
-            } else if (action.equalsIgnoreCase("listarPrestamos")) {
+            }else if(action.equalsIgnoreCase("ReportePrestamo")){
+            acceso=ReportePrestamo;
+            }else if(action.equalsIgnoreCase("botones")){
+            acceso=botones;
+            
+            }
+            else if (action.equalsIgnoreCase("listarPrestamos")) {
                 acceso = listarClientes;
             } else if (action.equalsIgnoreCase("editar")) {
                 request.setAttribute("idper", request.getParameter("id"));

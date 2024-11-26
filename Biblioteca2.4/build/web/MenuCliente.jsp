@@ -48,10 +48,7 @@
       </a>
     </li> <!-- /.list-group-item -->
     
-    
-    <li class="list-group-item pl-3 py-2">
-      <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Reportes</span></i></a>
-    </li>
+   
     
             <!-- Botón de cerrar sesión -->
     <a href="index.jsp?accion=Logout" class="btn  logout-button">

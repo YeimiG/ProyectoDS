@@ -24,6 +24,8 @@ public class ClienteServlet extends HttpServlet {
     String addCliente="vistas/DatosClientes.jsp";
     String editlibro="vistas/editCliente.jsp";
     String listarLibrosClientes="vistas/listarLibrosCliente.jsp";
+    String ReporteCliente="vistas/ReporteCliente.jsp";
+    String botones="vistas/botones.jsp";
     
     Clientes p=new Clientes();
     ClienteDao dao=new ClienteDao();
@@ -55,6 +57,11 @@ public class ClienteServlet extends HttpServlet {
             acceso=listarCliente;          
         }else if(action.equalsIgnoreCase("addClientes")){
             acceso=addCliente;
+        }else if(action.equalsIgnoreCase("ReporteCliente")){
+            acceso=ReporteCliente;
+        }else if(action.equalsIgnoreCase("botones")){
+            acceso=botones;
+            
         }
        
        
