@@ -2,6 +2,24 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/src/java/Modelos/Clientes.java</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/web/vistas/listar.jsp</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/web/vistas/DatosClientes.jsp</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/web/vistas/Reportes.jsp</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/src/java/ModelosDao/ClienteDao.java</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/web/vistas/prestamoCliente.jsp</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/web/vistas/ReportePrestamo.jsp</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/src/java/ModelosDao/PrestamosDao.java</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/web/MenuAdmin.jsp</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/src/java/Controladores/LibroServlet.java</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/web/MenuCliente.jsp</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/src/java/Config/Conexion.java</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/src/java/Modelos/Prestamos.java</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/web/vistas/botones.jsp</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/src/java/Controladores/PrestamoServlet.java</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/web/vistas/ReporteCliente.jsp</file>
+            <file>file:/C:/Users/owen%20CN/Documents/GitHub/ProyectoDS/Biblioteca2.4/src/java/Controladores/ClienteServlet.java</file>
+        </group>
     </open-files>
 </project-private>
