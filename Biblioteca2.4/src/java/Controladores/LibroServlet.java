@@ -24,6 +24,8 @@ public class LibroServlet extends HttpServlet {
     String listarlibrocliente = "vistas/listarLibrosCliente.jsp";
     String addlibro="vistas/addlibro.jsp";
     String editlibro="vistas/editlibro.jsp";
+    String Reportes="vistas/Reportes.jsp";
+    String botones="vistas/botones.jsp";
     String inicioAdmin="vistas/MenuAdmin.jsp";
     Libros p=new Libros();
     LibrosDao dao=new LibrosDao();
@@ -57,10 +59,17 @@ public class LibroServlet extends HttpServlet {
             acceso=listarlibrocliente;
         }else if(action.equalsIgnoreCase("addlibro")){
             acceso=addlibro;
+        }else if(action.equalsIgnoreCase("Reportes")){
+            acceso=Reportes;
+            
+        }else if(action.equalsIgnoreCase("botones")){
+            acceso=botones;
+            
         }
           if(action.equalsIgnoreCase("inicioAdmin")){
             acceso=inicioAdmin;          
         }
+          
         else if(action.equalsIgnoreCase("Agregar")){
             String Titulo=request.getParameter("txtTitulo");
             String Genero=request.getParameter("txtGenero");

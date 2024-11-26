@@ -50,7 +50,7 @@
     </li>
     
     <li class="list-group-item pl-3 py-2">
-      <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Reportes</span></i></a>
+      <a href="LibroServlet?accion=botones"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Reportes</span></i></a>
     </li>
     
      <li class="list-group-item pl-3 py-2">
@@ -58,7 +58,7 @@
     </li>
     
     <a href="index.jsp?accion=Logout" class=" btn logout-button" >
-    <i class="fa fa-sign-out" aria-hidden="true"></i> 
+    <i class="fa fa-sign-out" aria-hidden="true">salir</i> 
     </a>
 
 </div>
