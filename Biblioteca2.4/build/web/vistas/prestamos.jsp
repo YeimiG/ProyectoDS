@@ -39,7 +39,7 @@
   <div class="sidebar">
   <ul class="list-group flex-column d-inline-block first-menu">
      <li class="list-group-item pl-3 py-2">
-      <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Inicio</span></i></a>
+      <a href="MenuAdmin.jsp"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Inicio</span></i></a>
     </li> 
     <li class="list-group-item pl-3 py-2">
       <a href="LibroServlet?accion=listar"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Libros</span></i></a>
@@ -90,7 +90,6 @@
                 <thead>
                     <tr>
                         <th class="text-center">ID</th>
-                        <th class="text-center">CANTIDAD PRESTADA</th>
                         <th class="text-center">FECHA PRESTAMO</th>
                         <th class="text-center">FECHA DEVOLUCION</th>
                         <th class="text-center">LIBRO</th>
@@ -109,7 +108,6 @@
                 <tbody>
                     <tr>
                         <td class="text-center"><%= per.getID_Prestamo() %></td>
-                        <td class="text-center"><%= per.get_CantidadPrestada() %></td>
                         <td class="text-center"><%= per.getFechaPrestamo() %></td>
                         <td class="text-center"><%= per.getFechaDevolucion() %></td>
                         <td class="text-center"><%= per.getID_Libro() %></td>
@@ -117,8 +115,6 @@
                         <td class="text-center">
                             <a class="btn btn-warning" href="PrestamoServlet?accion=editar&id=<%= per.getID_Prestamo() %>">Editar</a>
                             <a class="btn btn-danger" href="PrestamoServlet?accion=eliminar&id=<%= per.getID_Prestamo() %>">Eliminar</a>
-                            <!-- Nuevo enlace para ver el detalle del préstamo -->
-                            <a class="btn btn-info" href="PrestamoServlet?accion=detalle&id=<%= per.getID_Prestamo() %>">Ver Detalle</a>
                         </td>
                     </tr>
                 <% } %>

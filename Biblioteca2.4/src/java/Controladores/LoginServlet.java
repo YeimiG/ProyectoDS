@@ -39,6 +39,10 @@ public class LoginServlet extends HttpServlet {
 
 // Método para registrar un nuevo usuario
 private void registrarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String nombre = request.getParameter("nombre");
+    String direccion = request.getParameter("direccion");
+    String telefono = request.getParameter("telefono");
+    String correo = request.getParameter("correo");
     String usuario = request.getParameter("usuario");
     String clave = request.getParameter("clave");
 
@@ -52,11 +56,15 @@ private void registrarUsuario(HttpServletRequest request, HttpServletResponse re
             return;
         }
 
-        String query = "INSERT INTO usuarios ( usuario, clave ) VALUES (?,?)";
+        String query = "INSERT INTO usuarios (nombre, direccion, telefono, correo, usuario, clave ) VALUES (?,?,?,?,?,?)";
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
            
-            pstmt.setString(1, usuario);
-            pstmt.setString(2, claveEncriptada); // Guardamos la contraseña encriptada
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, direccion);
+            pstmt.setString(3, telefono);
+            pstmt.setString(4, correo);
+            pstmt.setString(5, usuario);
+            pstmt.setString(6, claveEncriptada); // Guardamos la contraseña encriptada
             
 
             int rowsAffected = pstmt.executeUpdate();

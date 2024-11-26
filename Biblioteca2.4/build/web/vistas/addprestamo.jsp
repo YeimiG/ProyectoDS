@@ -68,23 +68,20 @@
     <body>
         <div class="container">
             <div class="col-lg-6">
-                <h1>Agregar Prestamo</h1>
-                <form action="PrestamoServlet">
-                    CANTIDAD A PRESTAR:<br>
-                    <input class="form-control" type="text" name="txtCantidadPrestada"><br>
-                    FECHA PRESTAMO: <br>
-                    <input class="form-control" type="text" name="txtFechaPrestamo"><br>
-                    FECHA DEVOLUCION:<br>
-                    <input class="form-control" type="text" name="txtFechaDevolucion"><br>
-                    ID LIBRO: <br>
-                    <input class="form-control" type="text" name="txtidLibro"><br>
-                    ID CLIENTE: <br>
-                    <input class="form-control" type="text" name="txtidCliente"><br>
-                    
-                    <input class="btn btn-primary" type="submit" name="accion" value="Agregar">
-                    
-                    <a class="btn btn-primary" href="LibroServlet?accion=listarLibroClientes">Regresar</a>
-                </form>
+                 <h1>Agregar Prestamo</h1>
+        <form action="PrestamoServlet?accion=Agregar" method="post">
+          FECHA PRESTAMO: <br>
+          <input class="form-control" type="text" name="fechaPrestamo"><br>
+          FECHA DEVOLUCION:<br>
+          <input class="form-control" type="text" name="fechaDevolucion"><br>
+          ID LIBRO: <br>
+          <input class="form-control" type="text" name="ID_Libro"><br>
+          ID CLIENTE: <br>
+          <input class="form-control" type="text" name="ID_Cliente"><br>
+
+          <input class="btn btn-primary" type="submit" value="Agregar">
+          <a class="btn btn-primary" href="PrestamoServlet?accion=listar">Regresar</a>
+        </form>
             </div>
 
         </div>

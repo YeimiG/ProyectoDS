@@ -4,11 +4,6 @@
  */
 package ModelosDao;
 
-/**
- *
- * @author YEIMI
- */
-
 import Config.Conexion;
 import Interfaces.CrudPrestamo;
 import Modelos.Prestamos;
@@ -26,24 +21,26 @@ public class PrestamosDao implements CrudPrestamo {
     ResultSet rs;
 
     @Override
-    public List listar() {
-        ArrayList<Prestamos>list=new ArrayList<>();
-        String sql="select * from Prestamo";
+    public List<Prestamos> listar() {
+        ArrayList<Prestamos> list = new ArrayList<>();
+        String sql = "SELECT * FROM Prestamo";
         try {
-            con=cn.getConnection();
-            ps=con.prepareStatement(sql);
-            rs=ps.executeQuery();
-            while(rs.next()){
-                Prestamos per=new Prestamos();
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Prestamos per = new Prestamos();
                 per.setID_Prestamo(rs.getInt("id"));
-                per.set_CantidadPrestada(rs.getString("CantidadPrestada"));
                 per.setFechaPrestamo(rs.getDate("fechaPrestamo"));
                 per.setFechaDevolucion(rs.getDate("fechaDevolucion"));
                 per.setID_Libro(rs.getInt("idLibro"));
-                per.setID_Cliente(rs.getInt("idCliente"));
+                per.setID_Cliente(rs.getInt("idUsuario"));
                 list.add(per);
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
         }
         return list;
     }
@@ -59,13 +56,13 @@ public class PrestamosDao implements CrudPrestamo {
             if (rs.next()) {
                 p = new Prestamos();
                 p.setID_Prestamo(rs.getInt("id"));
-                p.set_CantidadPrestada(rs.getString("CantidadPrestada"));
                 p.setFechaPrestamo(rs.getDate("fechaPrestamo"));
                 p.setFechaDevolucion(rs.getDate("fechaDevolucion"));
                 p.setID_Libro(rs.getInt("idLibro"));
-                p.setID_Cliente(rs.getInt("idCliente"));
+                p.setID_Cliente(rs.getInt("idUsuario"));
             }
         } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             closeConnection();
         }
@@ -74,18 +71,41 @@ public class PrestamosDao implements CrudPrestamo {
 
     @Override
     public boolean add(Prestamos prestamo) {
-        String sql = "INSERT INTO Prestamo (CantidadPrestada, fechaPrestamo, fechaDevolucion,idLibro, idCliente) VALUES (?, ?, ?, ?, ?)";
+        String sqlInsert = "INSERT INTO Prestamo(fechaPrestamo, fechaDevolucion, idUsuario, idLibro) VALUES (?, ?, ?, ?)";
+        String sqlUpdateCantidad = "UPDATE Libro SET cantidadLibro = cantidadLibro - 1 WHERE id = ? AND cantidadLibro > 0"; // Evita cantidad negativa
+
         try {
             con = cn.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, prestamo.get_CantidadPrestada());
-            ps.setDate(2, new java.sql.Date(prestamo.getFechaPrestamo().getTime()));
-            ps.setDate(3, new java.sql.Date(prestamo.getFechaDevolucion().getTime()));
+            con.setAutoCommit(false); // Inicia transacción
+
+            // Inserta el préstamo
+            ps = con.prepareStatement(sqlInsert);
+            ps.setDate(1, new java.sql.Date(prestamo.getFechaPrestamo().getTime()));
+            ps.setDate(2, new java.sql.Date(prestamo.getFechaDevolucion().getTime()));
+            ps.setInt(3, prestamo.getID_Cliente());
             ps.setInt(4, prestamo.getID_Libro());
-            ps.setInt(5, prestamo.getID_Cliente());
             ps.executeUpdate();
+
+            // Actualiza la cantidad del libro
+            ps = con.prepareStatement(sqlUpdateCantidad);
+            ps.setInt(1, prestamo.getID_Libro());
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected == 0) {
+                con.rollback(); // Revertir si no hay cantidad disponible
+                return false;
+            }
+
+            con.commit(); // Confirma transacción
             return true;
+
         } catch (SQLException e) {
+            try {
+                if (con != null) con.rollback(); // Revertir transacción en caso de error
+            } catch (SQLException rollbackEx) {
+                rollbackEx.printStackTrace();
+            }
+            e.printStackTrace();
             return false;
         } finally {
             closeConnection();
@@ -94,19 +114,19 @@ public class PrestamosDao implements CrudPrestamo {
 
     @Override
     public boolean edit(Prestamos prestamo) {
-        String sql = "UPDATE Prestamo SET CantidadPrestada = ?, fechaPrestamo = ?, fechaDevolucion = ?, idLibro = ?, idCliente = ? WHERE id = ?";
+        String sql = "UPDATE Prestamo SET fechaPrestamo = ?, fechaDevolucion = ?, idUsuario = ?, idLibro = ? WHERE id = ?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, prestamo.get_CantidadPrestada());
-            ps.setDate(2, new java.sql.Date(prestamo.getFechaPrestamo().getTime()));
-            ps.setDate(3, new java.sql.Date(prestamo.getFechaDevolucion().getTime()));
+            ps.setDate(1, new java.sql.Date(prestamo.getFechaPrestamo().getTime()));
+            ps.setDate(2, new java.sql.Date(prestamo.getFechaDevolucion().getTime()));
+            ps.setInt(3, prestamo.getID_Cliente());
             ps.setInt(4, prestamo.getID_Libro());
-            ps.setInt(5, prestamo.getID_Cliente());
-            ps.setInt(6, prestamo.getID_Prestamo());
+            ps.setInt(5, prestamo.getID_Prestamo());
             ps.executeUpdate();
             return true;
         } catch (SQLException e) {
+            e.printStackTrace();
             return false;
         } finally {
             closeConnection();
@@ -123,6 +143,7 @@ public class PrestamosDao implements CrudPrestamo {
             ps.executeUpdate();
             return true;
         } catch (SQLException e) {
+            e.printStackTrace();
             return false;
         } finally {
             closeConnection();
@@ -135,8 +156,8 @@ public class PrestamosDao implements CrudPrestamo {
             if (ps != null) ps.close();
             if (con != null) con.close();
         } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
-
-
 }
+

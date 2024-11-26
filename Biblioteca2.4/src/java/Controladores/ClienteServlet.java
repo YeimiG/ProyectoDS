@@ -79,24 +79,20 @@ public class ClienteServlet extends HttpServlet {
             acceso=editlibro;
         }
         else if(action.equalsIgnoreCase("Actualizar")){
-           String Nombre=request.getParameter("txtNombre");
-            String Direccion=request.getParameter("txtDireccion");
-            String Telefono=request.getParameter("txtTelefono");
-            String Correo=request.getParameter("txtCorreo");
-            int IdLibro=Integer.parseInt(request.getParameter("txtidLibro"));
-            int IdUsuario=Integer.parseInt(request.getParameter("txtidUsuario"));
+           String Nombre=request.getParameter("nombre");
+            String Direccion=request.getParameter("direccion");
+            String Telefono=request.getParameter("telefono");
+            String Correo=request.getParameter("correo");
             p.set_Nombre(Nombre);
             p.setDireccion(Direccion);
              p.setTelefono(Telefono);
             p.setCorreo(Correo);
-            p.setID_Libro(IdLibro);
-            p.setID_Usuario(IdUsuario);
             dao.add(p);
             acceso=listarCliente;
         }
         else if(action.equalsIgnoreCase("eliminar")){
             id=Integer.parseInt(request.getParameter("id"));
-            p.setID_Libro(id);
+            p.setID_Cliente(id);
             dao.eliminar(id);
             acceso=listarCliente;
         }

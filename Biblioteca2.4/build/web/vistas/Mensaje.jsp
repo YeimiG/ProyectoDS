@@ -75,7 +75,7 @@
         <h1>Muy buena eleccion!</h1>
         <h1>estas seguro de escoger este libro dale Agregar!</h1>
         
-         <a class="btn btn-success" href="ClienteServlet?accion=addClientes">Agregar Nuevo</a>
+        <a class="btn btn-success" href="PrestamoServlet?accion=addprestamo">Prestarlo</a>
     </body>
   </div>
 </div>

@@ -20,6 +20,10 @@
         <servlet-name>ClienteServlet</servlet-name>
         <servlet-class>Controladores.ClienteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletVistas</servlet-name>
+        <servlet-class>Controladores.ServletVistas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LibroServlet</servlet-name>
         <url-pattern>/LibroServlet</url-pattern>
@@ -39,5 +43,9 @@
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletVistas</servlet-name>
+        <url-pattern>/ServletVistas</url-pattern>
     </servlet-mapping>
 </web-app>

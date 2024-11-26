@@ -98,7 +98,7 @@
                         <td class="text-center"><%= per.getAutor()%></td>
                         <td><%= per.get_CantidadLibro()%></td>
                         
-                         <td class="text-center">
+                          <td class="text-center">
                             <a class="btn btn-warning" href="PrestamoServlet?accion=mensaje&id=<%= per.getID_Libro()%>">Prestar Libro</a>
                         </td>
                         

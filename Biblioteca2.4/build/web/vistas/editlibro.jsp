@@ -35,7 +35,7 @@
   <div class="sidebar">
   <ul class="list-group flex-column d-inline-block first-menu">
      <li class="list-group-item pl-3 py-2">
-      <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Inicio</span></i></a>
+      <a href="MenuAdmin.jsp"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Inicio</span></i></a>
     </li> 
     <li class="list-group-item pl-3 py-2">
       <a href="LibroServlet?accion=listar"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Libros</span></i></a>

@@ -32,14 +32,14 @@
   <div class="sidebar">
   <ul class="list-group flex-column d-inline-block first-menu">
      <li class="list-group-item pl-3 py-2">
-      <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Inicio</span></i></a>
+      <a href="MenuAdmin.jsp"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Inicio</span></i></a>
     </li> 
     <li class="list-group-item pl-3 py-2">
       <a href="LibroServlet?accion=listar"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Libros</span></i></a>
     </li> 
     
     <li class="list-group-item pl-3 py-2">
-      <a href="${pageContext.request.contextPath}/PrestamoServlet?accion=listar"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Prestamos</span></i></a>
+      <a href="PrestamoServlet?accion=listar"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Prestamos</span></i></a>
     </li> <!-- /.list-group-item -->
     
     <li class="list-group-item pl-3 py-2">
@@ -85,7 +85,22 @@
             <input type="hidden" name="action" value="registrar">
             
 
-
+   <div class="form__field">
+           <label for="usuario">Nombre:</label>
+          <input type="text" name="nombre" placeholder="">
+        </div>
+            <div class="form__field">
+           <label for="usuario">Direccion:</label>
+          <input type="text" name="direccion" placeholder="">
+        </div>
+            <div class="form__field">
+           <label for="usuario">Telefono:</label>
+          <input type="text" name="telefono" placeholder="">
+        </div>
+            <div class="form__field">
+           <label for="usuario">Correo:</label>
+          <input type="email" name="correo" placeholder="">
+        </div>
         <div class="form__field">
            <label for="usuario">Usuario:</label>
           <input type="text" name="usuario" placeholder="">
@@ -122,7 +137,6 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
 </body>
 </html>
-
 
 
 

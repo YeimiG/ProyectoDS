@@ -39,7 +39,7 @@
     </li> 
     
     <li class="list-group-item pl-3 py-2">
-      <a href="${pageContext.request.contextPath}/PrestamoServlet?accion=listar"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Prestamos</span></i></a>
+      <a href="PrestamoServlet?accion=listarPrestamos"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Prestamos</span></i></a>
     </li> <!-- /.list-group-item -->
     
     <li class="list-group-item pl-3 py-2">
@@ -79,3 +79,4 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
 </body>
 </html>
+

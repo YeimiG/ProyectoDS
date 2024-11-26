@@ -108,6 +108,7 @@ private String encriptarMD5(String input) {
         return null;
     }
 }
+
     
     private void iniciarSesion(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String usuario = request.getParameter("usuario");
